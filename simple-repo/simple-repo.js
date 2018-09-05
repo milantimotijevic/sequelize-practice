@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 const db = mysql.createConnection({
   host: 'localhost',
-  socketPath: '/var/run/mysqld/mysqld.sock',
+  //socketPath: '/var/run/mysqld/mysqld.sock', //this one is apparently no longer needed :/
   user: 'milan',
   password: 'linuxsux',
   database: 'sequelize_practice'
