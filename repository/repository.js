@@ -26,14 +26,16 @@ Manufacturer.hasMany(Product);
 //   });
 // });
 
-sequelize.sync({force: true}).then(function() {
-  console.log("Tables have been created");
+// sequelize.sync({force: true}).then(bootstrapData);
+//NOTE: when fetching actual data from a sequelize object (e.g. product) simply call its 'dataValues' property
+Product.findAll().then(function(products) {
+  Manufacturer.findAll().then(function(manufacturers) {
+    manufacturers[0].setProducts(products[0]);
+  });
 });
 
 
 function bootstrapData() {
-  // will get called 5 sec after running the app, plenty of time to setup all entities (tables)
-  // simply adds some entries into DB
   Manufacturer.create({
     name: "Sticks and stones",
     country: "USA"
@@ -43,7 +45,7 @@ function bootstrapData() {
   Product.create({
     name: "Broomstick",
     description: "Used for swiping floors"
+  }).then(function(newProduct) {
+
   });
 }
-
-setTimeout(bootstrapData, 5000);
