@@ -30,9 +30,17 @@ Manufacturer.hasMany(Product);
 //NOTE: when fetching actual data from a sequelize object (e.g. product) simply call its 'dataValues' property
 Product.findAll().then(function(products) {
   Manufacturer.findAll().then(function(manufacturers) {
-    manufacturers[0].setProducts(products[0]);
+    //manufacturers[0].setProducts(products[0]);
   });
 });
+
+// updating follows below logic (using 'where' clause)
+// Product.update(
+//     {description: "placeholder description"},
+//     {where: {id: 1}}
+// ).then(function(affectedRows) {
+//   console.log(affectedRows);
+// });
 
 
 function bootstrapData() {
