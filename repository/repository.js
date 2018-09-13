@@ -42,6 +42,13 @@ Product.findAll().then(function(products) {
 //   console.log(affectedRows);
 // });
 
+// querying also follows the 'where' logic
+// Product.findAll({
+//   where: {name: "DvD Reader"}
+// }).then(function(result) {
+//   console.log(result[0].dataValues);
+// });
+
 
 function bootstrapData() {
   Manufacturer.create({
